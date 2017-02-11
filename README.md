@@ -75,7 +75,7 @@ to work, and I copied that over too.
 
 After running 'install_qmaster' it tells me that `source /usr/local/sge/$SGE_CELL/common/settings.csh`
 will set the following environment variables:
-
+```
  - $SGE_ROOT         (always necessary)
  - $SGE_CELL         (if you are using a cell other than >default<)
  - $SGE_CLUSTER_NAME (always necessary)
@@ -83,18 +83,19 @@ will set the following environment variables:
  - $SGE_EXECD_PORT   (if you haven't added the service >sge_execd<)
  - $PATH/$path       (to find the Grid Engine binaries)
  - $MANPATH          (to access the manual pages)
-
+```
 Grid Engine messages can be found at:
-
- /tmp/qmaster_messages (during qmaster startup)
- /tmp/execd_messages   (during execution daemon startup)
-
+```
+ - /tmp/qmaster_messages (during qmaster startup)
+ - /tmp/execd_messages   (during execution daemon startup)
+```
 After startup the daemons log their messages in their spool directories.
-
- Qmaster:     /usr/local/sge/$SGE_CELL/spool/qmaster/messages
- Exec daemon: <execd_spool_dir>/<hostname>/messages
-
+```
+ - /usr/local/sge/$SGE_CELL/spool/qmaster/messages   (qmaster)
+ - <execd_spool_dir>/<hostname>/messages             (execd)
+```
 Grid Engine startup scripts can be found at:
-
- /usr/local/sge/$SGE_CELL/common/sgemaster (qmaster)
- /usr/local/sge/$SGE_CELL/common/sgeexecd (execd)
+```
+ - /usr/local/sge/$SGE_CELL/common/sgemaster (qmaster)
+ - /usr/local/sge/$SGE_CELL/common/sgeexecd  (execd)
+```
