@@ -12,7 +12,7 @@ with modifications for FreeBSD.
 
 ## Compilation:
 
-Easy, but not as eas as 'gmake', and not any easier than Open Grid Scheduler (in fact, exactly the same).
+Easy, but not as eas as `gmake`, and not any easier than Open Grid Scheduler (in fact, exactly the same).
 
 ```
 cd source
@@ -27,9 +27,11 @@ setenv AIMK_ARGS "-spool-classic -no-java -no-jni -no-gui-inst -no-secure -no-qm
 
 setenv SGE_ROOT  /usr/local/sge
 
-
 ./scripts/distinst -y -noexit -local -allall
+```
 
+(Previously, I had been using the following:)
+```
 ./scripts/distinst -y -noexit -local -libs fbsd-amd64 -- \
    man common sge_qmaster sge_execd sge_shadowd sge_shepherd sge_coshepherd \
    qstat qsub qalter qconf qdel qacct qmod qsh utilbin jobs qhost qmake qmon \
@@ -39,7 +41,7 @@ setenv SGE_ROOT  /usr/local/sge
 
 ## Installation:
 
-The 'official' installation wants you to run '/usr/local/sge/install_qmaster' and '/usr/local/sge/install_execd'. I haven't done that recently, instead, just the following steps:
+The 'official' installation wants you to run `/usr/local/sge/install_qmaster` and `/usr/local/sge/install_execd`. I haven't done that recently, instead, just the following steps:
 
 ```
 pw groupadd sgeadmin -g 103
@@ -61,19 +63,20 @@ vi ~/.cshrc
 
 ### Addendum:
 
-I wanted a fresh install, so I did (finally) run 'install_qmaster' to get the initial
-config setup.  I didn't run 'install_execd' though, and didn't muck with the startup
-scripts.
+I wanted a fresh install, so I did (finally) run `install_qmaster` to get the initial
+config setup.  I didn't run `install_execd` though, and didn't muck with the startup
+scripts, just used the same ones from Open Grid Scheduler.
 
-I edited '$SGE_CELL/spool/qmaster/jobseqnum' to set the job counter
-to what I had before.
+To make `install_qmaster` happy about my lack of `qtcsh` and `qmake`, those are now
+empty files in `common/fbsd-amd64/bin`.
 
-Surprisingly, the 'accounting' file from SGE 6.2u2_1 seems
-to work, and I copied that over too.
+I edited `$SGE_CELL/spool/qmaster/jobseqnum` to set the job counter to what I had before.
+
+Surprisingly, the `accounting` file from SGE 6.2u2_1 seems to work, and I copied that over too.
 
 ## Post-Installation:
 
-After running 'install_qmaster' it tells me that `source /usr/local/sge/$SGE_CELL/common/settings.csh`
+After running `install_qmaster` it tells me that `source /usr/local/sge/$SGE_CELL/common/settings.csh`
 will set the following environment variables:
 ```
  - $SGE_ROOT         (always necessary)
