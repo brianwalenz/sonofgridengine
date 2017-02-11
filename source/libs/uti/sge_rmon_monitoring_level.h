@@ -34,6 +34,8 @@
 
 #include <sys/types.h>
 
+#define u_long uint32_t
+
 /* The unused layers/classes below are kept for future or temporary use. */
 
 /* different layers for monitoring */
